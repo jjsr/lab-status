@@ -11,8 +11,8 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = firebase.initializeApp(firebaseConfig);
-const db = firebase.database();
+ const app = initializeApp(firebaseConfig);
+const  db = getAnalytics(app);
 
 // Function to update status in Firebase
 function updateStatus(lab, status) {
