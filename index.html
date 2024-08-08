@@ -1,1 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitor Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .section h2 {
+            text-align: center;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .button-container {
+            text-align: center;
+            margin: 10px;
+        }
+        .lab-name {
+            font-size: 18px;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .button {
+            padding: 15px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 80px;
+            text-align: center;
+        }
+        .free {
+            background-color: green;
+            color: white;
+        }
+        .occupied {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Visitor Management</h1>
+
+        <div class="section">
+            <h2>Main Building</h2>
+            <div class="buttons">
+                <div class="button-container">
+                    <span class="lab-name">A1</span>
+                    <button class="button free" id="btn1">Free</button>
+                </div>
+                <div class="button-container">
+                    <span class="lab-name">A2</span>
+                    <button class="button free" id="btn2">Free</button>
+                </div>
+                <div class="button-container">
+                    <span class="lab-name">Exhibition</span>
+                    <button class="button free" id="btn3">Free</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>New Building</h2>
+            <div class="buttons">
+                <div class="button-container">
+                    <span class="lab-name">Lab1</span>
+                    <button class="button free" id="btn4">Free</button>
+                </div>
+                <div class="button-container">
+                    <span class="lab-name">Lab2</span>
+                    <button class="button free" id="btn5">Free</button>
+                </div>
+                <div class="button-container">
+                    <span class="lab-name">Lab3</span>
+                    <button class="button free" id="btn6">Free</button>
+                </div>
+                <div class="button-container">
+                    <span class="lab-name">Lab4</span>
+                    <button class="button free" id="btn7">Free</button>
+                </div>
+                <div class="button-container">
+                    <span class="lab-name">Lab5</span>
+                    <button class="button free" id="btn8">Free</button>
+                </div>
+                <div class="button-container">
+                    <span class="lab-name">Lab6</span>
+                    <button class="button free" id="btn9">Free</button>
+                </div>
+                <div class="button-container">
+                    <span class="lab-name">A3</span>
+                    <button class="button free" id="btn10">Free</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const buttons = document.querySelectorAll('.button');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (button.classList.contains('free')) {
+                    button.classList.remove('free');
+                    button.classList.add('occupied');
+                    button.textContent = 'Occupied';
+                } else {
+                    button.classList.remove('occupied');
+                    button.classList.add('free');
+                    button.textContent = 'Free';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
 
