@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+        }
+        .button {
+            padding: 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .free {
+            background-color: green;
+            color: white;
+        }
+        .occupied {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lab Status</h1>
+        <button id="toggleButton" class="button free">Free</button>
+    </div>
+    <script>
+        const button = document.getElementById('toggleButton');
+        button.addEventListener('click', () => {
+            if (button.classList.contains('free')) {
+                button.classList.remove('free');
+                button.classList.add('occupied');
+                button.textContent = 'Occupied';
+            } else {
+                button.classList.remove('occupied');
+                button.classList.add('free');
+                button.textContent = 'Free';
+            }
+        });
+    </script>
+</body>
+</html>
