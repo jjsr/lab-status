@@ -7,22 +7,36 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             background-color: #f0f0f0;
+            padding: 20px;
         }
         .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        h1 {
             text-align: center;
         }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            text-align: center;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
         .button {
-            padding: 20px;
-            font-size: 18px;
+            padding: 15px;
+            font-size: 16px;
             border: none;
             cursor: pointer;
             border-radius: 5px;
-            margin-top: 20px;
+            margin: 5px;
+            width: 80px;
+            text-align: center;
         }
         .free {
             background-color: green;
@@ -37,20 +51,44 @@
 <body>
     <div class="container">
         <h1>Lab Status</h1>
-        <button id="toggleButton" class="button free">Free</button>
+
+        <div class="section">
+            <h2>Main Building</h2>
+            <div class="buttons">
+                <button class="button free" id="btn1">Free</button>
+                <button class="button free" id="btn2">Free</button>
+                <button class="button free" id="btn3">Free</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Section 2</h2>
+            <div class="buttons">
+                <button class="button free" id="btn4">Free</button>
+                <button class="button free" id="btn5">Free</button>
+                <button class="button free" id="btn6">Free</button>
+                <button class="button free" id="btn7">Free</button>
+                <button class="button free" id="btn8">Free</button>
+                <button class="button free" id="btn9">Free</button>
+                <button class="button free" id="btn10">Free</button>
+            </div>
+        </div>
     </div>
+
     <script>
-        const button = document.getElementById('toggleButton');
-        button.addEventListener('click', () => {
-            if (button.classList.contains('free')) {
-                button.classList.remove('free');
-                button.classList.add('occupied');
-                button.textContent = 'Occupied';
-            } else {
-                button.classList.remove('occupied');
-                button.classList.add('free');
-                button.textContent = 'Free';
-            }
+        const buttons = document.querySelectorAll('.button');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (button.classList.contains('free')) {
+                    button.classList.remove('free');
+                    button.classList.add('occupied');
+                    button.textContent = 'Occupied';
+                } else {
+                    button.classList.remove('occupied');
+                    button.classList.add('free');
+                    button.textContent = 'Free';
+                }
+            });
         });
     </script>
 </body>
