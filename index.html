@@ -1,1 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitor Management</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .section { margin: 20px; }
+        .button { padding: 10px 20px; margin: 5px; cursor: pointer; }
+        .free { background-color: green; color: white; }
+        .occupied { background-color: red; color: white; }
+        .lab-name { font-size: 24px; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Visitor Management</h1>
+    <div class="section" id="main-building">
+        <h2>Main Building</h2>
+        <div class="lab">
+            <div class="lab-name">Lab1</div>
+            <button id="btn1" class="button">Loading...</button>
+        </div>
+        <div class="lab">
+            <div class="lab-name">Lab2</div>
+            <button id="btn2" class="button">Loading...</button>
+        </div>
+        <div class="lab">
+            <div class="lab-name">Lab3</div>
+            <button id="btn3" class="button">Loading...</button>
+        </div>
+    </div>
+
+    <div class="section" id="new-building">
+        <h2>New Building</h2>
+        <div class="lab">
+            <div class="lab-name">Lab4</div>
+            <button id="btn4" class="button">Loading...</button>
+        </div>
+        <div class="lab">
+            <div class="lab-name">Lab5</div>
+            <button id="btn5" class="button">Loading...</button>
+        </div>
+        <div class="lab">
+            <div class="lab-name">Lab6</div>
+            <button id="btn6" class="button">Loading...</button>
+        </div>
+        <div class="lab">
+            <div class="lab-name">Lab7</div>
+            <button id="btn7" class="button">Loading...</button>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
 
