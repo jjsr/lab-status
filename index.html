@@ -5,105 +5,144 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visitor Management</title>
     <style>
-        body { font-family: Arial, sans-serif; }
-        .section { margin: 20px; }
-        .button { padding: 10px 20px; margin: 5px; cursor: pointer; }
-        .free { background-color: green; color: white; }
-        .occupied { background-color: red; color: white; }
-        .lab-name { font-size: 24px; margin-bottom: 10px; }
+        body { 
+            font-family: Arial, sans-serif; 
+            padding: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .section { 
+            width: 45%;
+            margin-bottom: 40px; 
+        }
+        .lab-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .lab {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 45%;
+        }
+        .button {
+            padding: 10px 20px; 
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .free { 
+            background-color: green; 
+            color: white; 
+        }
+        .occupied { 
+            background-color: red; 
+            color: white; 
+        }
+        .lab-name { 
+            font-size: 18px; 
+        }
     </style>
 </head>
 <body>
-    <h1>Visitor Management</h1>
     <div class="section" id="main-building">
         <h2>Main Building</h2>
-        <div class="lab">
-            <div class="lab-name">Lab1</div>
-            <button id="btn1" class="button">Loading...</button>
-        </div>
-        <div class="lab">
-            <div class="lab-name">Lab2</div>
-            <button id="btn2" class="button">Loading...</button>
-        </div>
-        <div class="lab">
-            <div class="lab-name">Lab3</div>
-            <button id="btn3" class="button">Loading...</button>
+        <div class="lab-container">
+            <div class="lab">
+                <div class="lab-name">A1</div>
+                <button id="btn1" class="button">Loading...</button>
+            </div>
+            <div class="lab">
+                <div class="lab-name">A2</div>
+                <button id="btn2" class="button">Loading...</button>
+            </div>
+            <div class="lab">
+                <div class="lab-name">Ex1-Ex4</div>
+                <button id="btn3" class="button">Loading...</button>
+            </div>
         </div>
     </div>
 
     <div class="section" id="new-building">
         <h2>New Building</h2>
-        <div class="lab">
-            <div class="lab-name">Lab4</div>
-            <button id="btn4" class="button">Loading...</button>
-        </div>
-        <div class="lab">
-            <div class="lab-name">Lab5</div>
-            <button id="btn5" class="button">Loading...</button>
-        </div>
-        <div class="lab">
-            <div class="lab-name">Lab6</div>
-            <button id="btn6" class="button">Loading...</button>
-        </div>
-        <div class="lab">
-            <div class="lab-name">Lab7</div>
-            <button id="btn7" class="button">Loading...</button>
+        <div class="lab-container">
+            <div class="lab">
+                <div class="lab-name">Lab1</div>
+                <button id="btn4" class="button">Loading...</button>
+            </div>
+            <div class="lab">
+                <div class="lab-name">Lab2</div>
+                <button id="btn5" class="button">Loading...</button>
+            </div>
+            <div class="lab">
+                <div class="lab-name">Lab3</div>
+                <button id="btn6" class="button">Loading...</button>
+            </div>
+            <div class="lab">
+                <div class="lab-name">Lab4</div>
+                <button id="btn7" class="button">Loading...</button>
+            </div>
+            <div class="lab">
+                <div class="lab-name">Lab5</div>
+                <button id="btn8" class="button">Loading...</button>
+            </div>
+            <div class="lab">
+                <div class="lab-name">Lab6</div>
+                <button id="btn9" class="button">Loading...</button>
+            </div>
+            <div class="lab">
+                <div class="lab-name">A3</div>
+                <button id="btn10" class="button">Loading...</button>
+            </div>
         </div>
     </div>
 
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-  import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+        import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
 
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyCl530HHvIyG-Lim48CxYRjM-rUihn7ZJs",
-    authDomain: "lab-test-d08ac.firebaseapp.com",
-    databaseURL: "https://lab-test-d08ac-default-rtdb.firebaseio.com",
-    projectId: "lab-test-d08ac",
-    storageBucket: "lab-test-d08ac.appspot.com",
-    messagingSenderId: "934253333557",
-    appId: "1:934253333557:web:30478dde643edf3046b57c",
-    measurementId: "G-SKPK9B5VYG"
-  };
+        const firebaseConfig = {
+            apiKey: "AIzaSyCl530HHvIyG-Lim48CxYRjM-rUihn7ZJs",
+            authDomain: "lab-test-d08ac.firebaseapp.com",
+            databaseURL: "https://lab-test-d08ac-default-rtdb.firebaseio.com",
+            projectId: "lab-test-d08ac",
+            storageBucket: "lab-test-d08ac.appspot.com",
+            messagingSenderId: "934253333557",
+            appId: "1:934253333557:web:30478dde643edf3046b57c",
+            measurementId: "G-SKPK9B5VYG"
+        };
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const db = getDatabase(app);
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
 
-  // Function to update status in Firebase
-  function updateStatus(lab, status) {
-    set(ref(db, 'labs/' + lab), {
-        status: status
-    });
-  }
+        function updateStatus(lab, status) {
+            set(ref(db, 'labs/' + lab), {
+                status: status
+            });
+        }
 
-  // Function to initialize buttons and attach event listeners
-  function initializeButtons() {
-    const buttons = document.querySelectorAll('.button');
-    
-    buttons.forEach(button => {
-      const lab = button.id.replace('btn', 'Lab');
-      
-      // Fetch initial status from Firebase
-      onValue(ref(db, 'labs/' + lab), (snapshot) => {
-        const status = snapshot.val()?.status || 'Free';
-        button.textContent = status;
-        button.className = `button ${status.toLowerCase()}`;
-      });
+        function initializeButtons() {
+            const buttons = document.querySelectorAll('.button');
+            
+            buttons.forEach(button => {
+                const lab = button.id.replace('btn', 'Lab');
+                
+                onValue(ref(db, 'labs/' + lab), (snapshot) => {
+                    const status = snapshot.val()?.status || 'Free';
+                    button.textContent = status;
+                    button.className = `button ${status.toLowerCase()}`;
+                });
 
-      // Toggle status on click
-      button.addEventListener('click', () => {
-        const newStatus = button.textContent === 'Free' ? 'Occupied' : 'Free';
-        updateStatus(lab, newStatus);
-      });
-    });
-  }
+                button.addEventListener('click', () => {
+                    const newStatus = button.textContent === 'Free' ? 'Occupied' : 'Free';
+                    updateStatus(lab, newStatus);
+                });
+            });
+        }
 
-  // Initialize buttons on page load
-  initializeButtons();
-</script>
-    
-   </body>
+        initializeButtons();
+    </script>
+</body>
 </html>
