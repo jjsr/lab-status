@@ -51,29 +51,58 @@
         </div>
     </div>
 
-<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
-<script>
-   const firebaseConfig = {
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+  import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
     apiKey: "AIzaSyCl530HHvIyG-Lim48CxYRjM-rUihn7ZJs",
     authDomain: "lab-test-d08ac.firebaseapp.com",
+    databaseURL: "https://lab-test-d08ac-default-rtdb.firebaseio.com",
     projectId: "lab-test-d08ac",
     storageBucket: "lab-test-d08ac.appspot.com",
     messagingSenderId: "934253333557",
     appId: "1:934253333557:web:30478dde643edf3046b57c",
     measurementId: "G-SKPK9B5VYG"
   };
-    const firebaseApp = firebase.initializeApp({ /* Firebase config */ });
-   const db = firebaseApp.firestore();
-   const auth = firebaseApp.auth();
-    db.ref('test').set({
-    connected: true
-}).then(() => {
-    console.log('Firebase connection successful!');
-}).catch((error) => {
-    console.error('Firebase connection error:', error);
-});
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+  // Function to update status in Firebase
+  function updateStatus(lab, status) {
+    set(ref(db, 'labs/' + lab), {
+        status: status
+    });
+  }
+
+  // Function to initialize buttons and attach event listeners
+  function initializeButtons() {
+    const buttons = document.querySelectorAll('.button');
+    
+    buttons.forEach(button => {
+      const lab = button.id.replace('btn', 'Lab');
+      
+      // Fetch initial status from Firebase
+      onValue(ref(db, 'labs/' + lab), (snapshot) => {
+        const status = snapshot.val()?.status || 'Free';
+        button.textContent = status;
+        button.className = `button ${status.toLowerCase()}`;
+      });
+
+      // Toggle status on click
+      button.addEventListener('click', () => {
+        const newStatus = button.textContent === 'Free' ? 'Occupied' : 'Free';
+        updateStatus(lab, newStatus);
+      });
+    });
+  }
+
+  // Initialize buttons on page load
+  initializeButtons();
 </script>
     
    </body>
